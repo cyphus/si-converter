@@ -43,3 +43,11 @@ Once the app is running, you can get stack traces and debug output by running:
 ```
 docker exec si-converter tail -f  /var/log/uwsgi/app/app.log
 ```
+
+## Tests
+
+```
+pip install -r units/requirements-test.txt
+pip install -e .
+pytest
+```

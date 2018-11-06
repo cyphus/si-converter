@@ -1,5 +1,5 @@
 import unittest
-from ..si_convert import *
+from units.si_convert import *
 
 class TestRPNTransform(unittest.TestCase):
     def test_rpn_transform_empty_list(self):

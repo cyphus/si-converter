@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from flask import Flask, request, jsonify
-from . import si_convert
+from units.si_convert import convert_units
 
 app = Flask(__name__)
 
@@ -10,7 +10,7 @@ def units_si():
     try:
         if len(unit_str) == 0:
             raise ValueError("Input unit string empty or not defined")
-        response = si_convert.convert_units(unit_str)
+        response = convert_units(unit_str)
         status = 200
     except ValueError as e:
         response = {"error": str(e)}

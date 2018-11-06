@@ -2,7 +2,7 @@
 from collections import deque, namedtuple
 from enum import Enum
 import re
-from .units import UNITS, si_unit_lookup_table
+from units.units import UNITS, si_unit_lookup_table
 
 TokenType = Enum('TokenType', 'LPAREN RPAREN UNIT MUL DIV')
 

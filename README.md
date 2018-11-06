@@ -35,7 +35,7 @@ container with the app directory mounted under `/var/www/app`:
 
 ```
 docker build -t tkennedy/si-converter .
-docker run --rm -d -p 8080:80 -v $PWD/app:/var/www/app --name si-converter tkennedy/si-converter
+docker run --rm -d -p 8080:80 -v $PWD:/var/www/app --name si-converter tkennedy/si-converter
 ```
 
 Once the app is running, you can get stack traces and debug output by running:

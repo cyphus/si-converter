@@ -2,7 +2,7 @@ import unittest
 from ..tokenizer import (Token, TokenType)
 from ..parser import *
 
-class TestTokenizer(unittest.TestCase):
+class TestParser(unittest.TestCase):
     def test_parse_empty_list(self):
         self.assertEqual([], parse([]))
 

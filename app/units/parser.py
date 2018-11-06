@@ -7,10 +7,12 @@ def is_operator(token):
 
 def parse(tokens):
     """
-    Returns an AST from a given list of tokens using the shunting-yard
-    algorithm.
+    Transforms the given list of tokens into reverse polish notation using the
+    shunting-yard algorithm. Linear complexity O(n).
     """
+    # output queue
     output = deque()
+    # operators stack
     operators = []
     for token in tokens:
         if token.type == TokenType.UNIT:
@@ -32,3 +34,23 @@ def parse(tokens):
         output.append(operators.pop())
 
     return [token for token in output]
+
+def coefficient(rpn_tokens):
+    """
+    Returns the multiplication factor of the units by applying all unit
+    operations on the given rpn_tokens.
+    """
+    values = []
+    for token in rpn_tokens:
+        if token.type == TokenType.UNIT:
+            values.append(token.coefficient)
+        elif token.type == TokenType.MUL:
+            if len(values) < 2:
+                raise ValueError("Not enough operands to satisfy operation")
+            values.append(values.pop() * values.pop())
+        elif token.type == TokenType.DIV:
+            if len(values) < 2:
+                raise ValueError("Not enough operands to satisfy operation")
+            right, left = values.pop(), values.pop()
+            values.append(left / right)
+    return values.pop()

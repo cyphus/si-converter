@@ -5,7 +5,8 @@ import re
 
 TokenType = Enum('TokenType', 'LPAREN RPAREN UNIT MUL DIV')
 
-Token = namedtuple('Token', 'type text')
+Token = namedtuple('Token', 'type text coefficient')
+Token.__new__.__defaults__ = (None,)
 
 TOKEN_REGEXES = {
     re.compile(r'[a-zA-Z]+'): TokenType.UNIT,

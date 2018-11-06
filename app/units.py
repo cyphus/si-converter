@@ -21,3 +21,14 @@ UNITS = [
     Unit('litre', 'L', 'm3', 0.001),
     Unit('tonne', 't', 'kg', 10000),
 ]
+
+def si_unit_lookup_table(units=UNITS):
+    """
+    Creates a lookup table from all possible input unit names and symbols to
+    their corresponding SI unit.
+    """
+    return {
+        **{ u.name: (u.si_equivalent, u.coefficient) for u in units
+            if u.name is not None},
+        **{ u.symbol: (u.si_equivalent, u.coefficient) for u in units }
+    }
